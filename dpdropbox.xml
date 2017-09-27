@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="4.0" type="plugin" group="filesystem" method="upgrade">
+	<name>plg_filesystem_dpdropbox</name>
+	<author>Digital Peak</author>
+	<creationDate>Sep 2017</creationDate>
+	<copyright>(C) 2007 - 2017 Digital Peak. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.htmlGNU/GPL</license>
+	<authorEmail>info@digital-peak.com</authorEmail>
+	<authorUrl>joomla.digital-peak.com</authorUrl>
+	<version>0.1.0</version>
+	<description>PLG_FILESYSTEM_DPDROPBOX_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="dpdropbox">dpdropbox.php</filename>
+		<folder>language</folder>
+		<folder>Adapter</folder>
+		<folder>field</folder>
+		<folder>vendor</folder>
+	</files>
+	<config>
+		<fields name="params" addfieldpath="plugins/filesystem/dropbox/field">
+			<fieldset name="basic">
+				<field
+						name="display_name"
+						type="text"
+						label="PLG_FILESYSTEM_DPDROPBOX_DISPLAY_NAME_LABEL"
+						description="PLG_FILESYSTEM_DPDROPBOX_DISPLAY_NAME_DESC"
+						default="Dropbox"
+						required="true"
+				/>
+				<field
+						type="text"
+						name="account_name"
+						label="PLG_FILESYSTEM_DPDROPBOX_ACCOUNT_NAME_LABEL"
+						description="PLG_FILESYSTEM_DPDROPBOX_ACCOUNT_NAME_DESC"
+						default="Your Dropbox"
+						required="true"
+				/>
+				<field
+						name="client_id"
+						type="text"
+						default=""
+						required="true"
+						label="PLG_FILESYSTEM_DPDROPBOX_CLIENT_ID_LABEL"
+						description="PLG_FILESYSTEM_DPDROPBOX_CLIENT_ID_DESC"
+				/>
+				<field
+						name="client_secret"
+						type="text"
+						default=""
+						required="true"
+						description="PLG_FILESYSTEM_DPDROPBOX_CLIENT_SECRET_DESC"
+						label="PLG_FILESYSTEM_DPDROPBOX_CLIENT_SECRET_LABEL"
+				/>
+				<field
+						name="access_token"
+						type="text"
+						default=""
+						label="PLG_FILESYSTEM_DPDROPBOX_API_TOKEN_LABEL"
+						description="PLG_FILESYSTEM_DPDROPBOX_API_TOKEN_DESC"
+				/>
+				<field
+						name="auth_button"
+						type="authbutton"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
