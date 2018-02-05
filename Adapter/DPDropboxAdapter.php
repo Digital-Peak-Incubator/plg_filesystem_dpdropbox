@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Uri\Uri;
 use Joomla\Component\Media\Administrator\Adapter\AdapterInterface;
-use Joomla\Component\Media\Administrator\Adapter\FileNotFoundException;
+use Joomla\Component\Media\Administrator\Exception\FileNotFoundException;
 
 /**
  * Class JoomlaDropboxAdapter
@@ -303,7 +303,7 @@ class DPDropboxAdapter implements AdapterInterface
 
 		$name = explode(":", $id)[1];
 		$timeStamp = strtotime($timeModified);
-		$filePath = \JPath::clean(JPATH_SITE . '/media/plg_filesystem_dropbox/.thumb_cache/' . $name . $timeStamp . '.jpg', '/');
+		$filePath = \JPath::clean(JPATH_SITE . '/media/plg_filesystem_dpdropbox/.thumb_cache/' . $name . $timeStamp . '.jpg', '/');
 
 		if (!\JFile::exists($filePath))
 		{
@@ -311,9 +311,22 @@ class DPDropboxAdapter implements AdapterInterface
 			\JFile::write($filePath, $content);
 		}
 
-		return Uri::root() . \JPath::clean('media/plg_filesystem_dropbox/.thumb_cache/' . $name . $timeStamp . '.jpg', '/');
+		return Uri::root() . \JPath::clean('media/plg_filesystem_dpdropbox/.thumb_cache/' . $name . $timeStamp . '.jpg', '/');
 	}
 
+	/**
+	 * Returns a resource for the given path.
+	 *
+	 * @param   string  $path  The path
+	 *
+	 * @return  resource
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 * @throws  \Exception
+	 */
+	public function getResource($path){
+		return null;
+	}
 
 	/**
 	 * Creates a folder with the given name in the given path.

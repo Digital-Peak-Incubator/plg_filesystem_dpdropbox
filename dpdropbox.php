@@ -75,7 +75,7 @@ class PlgFileSystemDpdropbox extends CMSPlugin implements ProviderInterface
 			$query = $db->getQuery(true)
 				->update($db->qn('#__extensions'))
 				->set($db->qn('params') . '=' . $db->q($this->params->toString()))
-				->where($db->qn('element') . '=' . $db->q('dropbox'))
+				->where($db->qn('element') . '=' . $db->q('dpdropbox'))
 				->where($db->qn('type') . '=' . $db->q('plugin'));
 			$db->setQuery($query);
 			$db->execute();

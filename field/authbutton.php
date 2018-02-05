@@ -50,7 +50,11 @@ class JFormFieldAuthButton extends JFormField
 	 */
 	public function getInput()
 	{
-		$plugin        = \Joomla\CMS\Plugin\PluginHelper::getPlugin('filesystem', 'dropbox');
+		$plugin = \Joomla\CMS\Plugin\PluginHelper::getPlugin('filesystem', 'dpdropbox');
+		if (!$plugin) {
+			return null;
+		}
+
 		$params        = new \Joomla\Registry\Registry($plugin->params);
 		$client_id     = $params->get('client_id', '');
 		$client_secret = $params->get('client_secret', '');
@@ -60,10 +64,10 @@ class JFormFieldAuthButton extends JFormField
 
 		$helper      = $dropbox->getAuthHelper();
 		$redirectUri = $helper->getAuthUrl(
-			Joomla\CMS\Uri\Uri::root() . 'administrator/index.php' . '?option=com_media&task=plugin.oauthcallback&plugin=dropbox'
+			Joomla\CMS\Uri\Uri::root() . 'administrator/index.php' . '?option=com_media&task=plugin.oauthcallback&plugin=dpdropbox'
 		);
 
-		$html  = '<a class="btn btn-info" href="' . $redirectUri . '">Get Access Token</a>';
+		$html = '<a class="btn btn-info" href="' . $redirectUri . '">Get Access Token</a>';
 		$html .= '<br><p><b>*Use this button after saving client credentials</b></p>';
 
 		return $html;
