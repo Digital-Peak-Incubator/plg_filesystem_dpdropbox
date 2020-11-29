@@ -148,7 +148,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 *
 	 * @throws  \Exception
 	 */
-	public function getFile($path = '/')
+	public function getFile(string $path = '/') : \stdClass
 	{
 		$path = \JPath::clean($path);
 
@@ -184,7 +184,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 * @since   __DEPLOY_VERSION__
 	 * @throws  \Exception
 	 */
-	public function getFiles($path = '/')
+	public function getFiles(string $path = '/') : array
 	{
 		// Check whether it is root or not
 		// Dropbox client has some issues
@@ -339,7 +339,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 * @since   __DEPLOY_VERSION__
 	 * @throws  \Exception
 	 */
-	public function createFolder($name, $path)
+	public function createFolder(string $name, string $path) : string
 	{
 		$this->client->createFolder(\JPath::clean($path . '/' . $name));
 	}
@@ -356,7 +356,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 * @since   __DEPLOY_VERSION__
 	 * @throws  \Exception
 	 */
-	public function createFile($name, $path, $data)
+	public function createFile(string $name, string $path, $data) : string
 	{
 		$filePath = \JPath::clean($path . '/' . $name);
 
@@ -427,7 +427,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 * @since   __DEPLOY_VERSION__
 	 * @throws  \Exception
 	 */
-	public function move($sourcePath, $destinationPath, $force = false)
+	public function move(string $sourcePath, string $destinationPath, bool $force = false) : string
 	{
 		$response = $this->client->move($sourcePath, $destinationPath);
 
@@ -449,7 +449,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 * @since   __DEPLOY_VERSION__
 	 * @throws  \Exception
 	 */
-	public function copy( $sourcePath, $destinationPath, $force = false)
+	public function copy(string $sourcePath, string $destinationPath, bool $force = false) : string
 	{
 		$response = $this->client->copy($sourcePath, $destinationPath);
 
@@ -469,7 +469,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 * @since   __DEPLOY_VERSION__
 	 * @throws FileNotFoundException
 	 */
-	public function getUrl($path)
+	public function getUrl(string $path) : string
 	{
 		return $this->client->getTemporaryLink($path);
 	}
@@ -481,7 +481,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function getAdapterName()
+	public function getAdapterName() : string
 	{
 		return $this->accountName;
 	}
@@ -511,7 +511,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function search($path, $needle, $recursive)
+	public function search(string $path, string $needle, bool $recursive = false) : array
 	{
 		return [];
 	}
@@ -527,7 +527,7 @@ class DPDropboxAdapter implements AdapterInterface
 	 * @since   __DEPLOY_VERSION__
 	 * @throws \FileNotFoundException
 	 */
-	public function getTemporaryUrl( $path )
+	public function getTemporaryUrl(string $path) : string
 	{
 		return $this->client->getTemporaryLink($path);
 	}
